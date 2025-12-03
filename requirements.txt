@@ -1,0 +1,15 @@
+langchain==0.3.27
+langchain-text-splitters==0.3.9
+langchain-core==0.3.72
+langchain-community==0.3.23
+langchain-huggingface==0.3.0
+langchain-google-genai==2.0.7
+langchain-groq==0.3.4
+chromadb==0.6.1
+python-dotenv==1.1.1
+gradio==5.38.1
+fastapi==0.116.1
+uvicorn==0.35.0
+beautifulsoup4==4.14.1
+sentence-transformers==4.1.0
+slowapi==0.1.9

@@ -1,0 +1,7 @@
+Bước 1: tạo môi trường ảo và cài các thư viện trong requirements.txt
+Bước 2: tạo file .env chứa api key cần thiết
+Bước 3: chạy test_api.py kiểm tra api
+Bước 4: chạy crawl_news.py để lấy dữ liệu từ Vnexpress 
+Bước 5: chạy build_data.py để tạo vector store
+Bước 6: mở terminal và chạy lệnh: uvicorn server:app --host 0.0.0.0 --port 8000
+Bước 7: Chạy được thì vào http://localhost:8000/ hoặc http://127.0.0.1:8000/
