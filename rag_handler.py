@@ -210,7 +210,6 @@ def load_vectorstore(
     logger.info(f"Loaded vectorstore with {vectorstore._collection.count()} documents")
     return vectorstore
 
-
 def format_answer(text: str, max_line_length: int = 100) -> str:
     import textwrap
     text = text.replace("\r\n", "\n").replace("\r", "\n")
@@ -227,7 +226,6 @@ def format_answer(text: str, max_line_length: int = 100) -> str:
         else:
             wrapped_lines.append(line)
     return "\n".join(wrapped_lines).strip()
-
 
 class RAGHandler:
     def __init__(
