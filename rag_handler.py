@@ -97,6 +97,7 @@ def create_llm(
     def _build_groq():
         api_key = _require_groq_key()
         return ChatGroq(
+            model="llama-3.1-8b-instant",
             temperature=temperature,
             max_tokens=max_tokens,
             api_key=api_key,
@@ -143,11 +144,13 @@ def create_chain(
             """Bạn là trợ lý AI chuyên phân tích tin tức tài chính Việt Nam.
 
 Nguyên tắc:
-- Trả lời tối đa 512 từ
-- Tóm tắt thông tin từ ngữ cảnh một cách đầy đủ và ngắn gọn nhất có thể
-- Trích dẫn chính xác các con số (ví dụ: "tăng 6.3%", "giảm xuống 5.2 triệu")
-- Phân tích và đưa ra dự đoán nếu được yêu cầu (nêu rõ đây là phân tích, không phải lời khuyên đầu tư)
-- Chỉ dùng thông tin có trong ngữ cảnh, không tự thêm thông tin
+- Trả lời tối đa 512 từ.
+- Trả lời **dưới dạng các gạch đầu dòng** (bullet points). Mỗi gạch là một ý độc lập, ngắn gọn và rõ ràng.
+- Mỗi gạch nên là một hoặc hai câu ngắn; tránh đoạn văn dài.
+- Tóm tắt thông tin từ ngữ cảnh một cách đầy đủ và ngắn gọn nhất có thể.
+- Trích dẫn chính xác các con số (ví dụ: "tăng 6.3%", "giảm xuống 5.2 triệu").
+- Phân tích và đưa ra dự đoán nếu được yêu cầu (nêu rõ đây là phân tích, không phải lời khuyên đầu tư).
+- **Chỉ dùng thông tin có trong ngữ cảnh**, không tự thêm thông tin.
 - Nếu không có thông tin: "Xin lỗi, tôi không tìm thấy thông tin phù hợp trong dữ liệu hiện có."
 
 Trả lời bằng tiếng Việt, giọng điệu chuyên nghiệp và khách quan."""
@@ -235,7 +238,7 @@ class RAGHandler:
         retrieval_k: int = 6,
         memory_window: int = 5,
         session_timeout: int = 30,
-        provider="auto"
+        provider="groq"
     ):
         self.collection_name = collection_name
         self.persist_dir = persist_dir
